@@ -29,7 +29,9 @@ const Block = ({ match }) => {
           return (
             <div>
               <h2>Block {data.block.index}</h2>
-              <h4>{moment(data.block.time).fromNow()}</h4>
+              <h4>
+                {moment(data.block.time).format('MMMM Do YYYY, h:mm:ss a')} ({moment(data.block.time).fromNow()})
+              </h4>
               <h3>Transactions</h3>
               <ul>
                 {data.block.transactions.map(transaction => (
