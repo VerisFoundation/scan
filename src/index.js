@@ -5,7 +5,7 @@ import { ApolloProvider } from 'react-apollo'
 import App from './App'
 import './index.css'
 
-const client = new ApolloClient({ uri: 'http://ico.verisfoundation.com:5000/graphql' })
+const client = new ApolloClient({ uri: 'https://api.verisfoundation.com/graphql' })
 
 const ApolloApp = () => (
   <ApolloProvider client={client}>
