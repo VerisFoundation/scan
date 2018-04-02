@@ -1,5 +1,6 @@
 {
   "name": "vrs-explorer",
+  "homepage": "https://scan.verisfoundation.com/",
   "private": true,
   "dependencies": {
     "apollo-boost": "^0.1.4",
@@ -17,11 +18,23 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "deploy": "surge ./build -d scan.verisfoundation.com",
+    "deploy": "gh-pages -d build",
     "predeploy": "yarn build"
   },
   "browserslist": {
-    "development": ["last 2 chrome versions", "last 2 firefox versions", "last 2 edge versions"],
-    "production": [">1%", "last 4 versions", "Firefox ESR", "not ie < 11"]
+    "development": [
+      "last 2 chrome versions",
+      "last 2 firefox versions",
+      "last 2 edge versions"
+    ],
+    "production": [
+      ">1%",
+      "last 4 versions",
+      "Firefox ESR",
+      "not ie < 11"
+    ]
+  },
+  "devDependencies": {
+    "gh-pages": "^1.1.0"
   }
 }
