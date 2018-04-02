@@ -17,7 +17,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "deploy": "surge ./buildn -d scan.verisfoundation.com",
+    "deploy": "surge ./build -d scan.verisfoundation.com",
     "predeploy": "yarn build"
   },
   "browserslist": {
