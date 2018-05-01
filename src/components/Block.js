@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { gql } from 'apollo-boost'
 import { Query } from 'react-apollo'
 import moment from 'moment'
+import Address from './Address'
 
 const GET_BLOCK = gql`
   query block($index: Int!) {
@@ -36,7 +37,10 @@ const Block = ({ match }) => {
               <ul>
                 {data.block.transactions.map(transaction => (
                   <li key={transaction.id}>
-                    {transaction.type} <Link to={`/transaction/${transaction.id}`}>{transaction.id}</Link>
+                    {transaction.type}{' '}
+                    <Link to={`/transaction/${transaction.id}`}>
+                      <Address>{transaction.id}</Address>
+                    </Link>
                   </li>
                 ))}
               </ul>

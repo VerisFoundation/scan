@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { gql } from 'apollo-boost'
 import { Query } from 'react-apollo'
 import moment from 'moment'
+import Address from './Address'
 
 const GET_RECENT_TRANSACTIONS = gql`
   query {
@@ -24,22 +25,24 @@ const RecentTransactions = () => (
         if (loading) return <div>Loading...</div>
         if (error) return <div>Error :(</div>
         return (
-          <table>
+          <table className="transactions">
             <thead>
               <tr>
-                <th>Type</th>
-                <th>Transaction ID</th>
-                <th>Time</th>
+                <th className="type">Type</th>
+                <th className="txid">Transaction ID</th>
+                <th className="time">Time</th>
               </tr>
             </thead>
             <tbody>
               {data.transactions.map(tx => (
                 <tr key={tx.id}>
-                  <td>{tx.type.replace('Transaction', '')}</td>
-                  <td>
-                    <Link to={`/transaction/${tx.id}`}>{tx.id}</Link>
+                  <td className="type">{tx.type.replace('Transaction', '')}</td>
+                  <td className="txid">
+                    <Link to={`/transaction/${tx.id}`}>
+                      <Address>{tx.id}</Address>
+                    </Link>
                   </td>
-                  <td>{moment(tx.block.time).fromNow()}</td>
+                  <td className="time">{moment(tx.block.time).fromNow()}</td>
                 </tr>
               ))}
             </tbody>

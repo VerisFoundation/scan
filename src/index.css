@@ -1,3 +1,110 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700');
+
+html {
+  height: 100%;
+}
+
+body,
+#root,
+.layout {
+  min-height: 100vh;
+}
+
 body {
-  font-family: sans-serif;
+  margin: 0;
+}
+
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+a:link,
+a:visited {
+  color: #358ac7;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+address {
+  word-wrap: break-word;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+address span {
+  font-family: monospace;
+  font-style: normal;
+  background-color: #eee;
+  padding: 2px;
+  border-radius: 4px;
+}
+
+table {
+  width: 100%;
+}
+
+table th {
+  text-align: left;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.wrap {
+  max-width: 960px;
+  margin: auto;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+}
+
+.layout > main {
+  padding: 1rem;
+  flex: 1;
+}
+
+header h1 {
+  margin: 0;
+  padding: 1rem;
+}
+
+header {
+  background-color: #358ac7;
+}
+
+header a,
+header h1,
+header img {
+  height: 40px;
+}
+
+footer {
+  padding: 1rem;
+}
+
+footer p {
+  margin: 0;
+  text-align: center;
+}
+
+.Home {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+table.transactions {
+  table-layout: fixed;
+  max-width: 44rem;
+}
+
+table.transactions .type {
+  width: 4rem;
+}
+
+table.transactions .time {
+  width: 8rem;
 }

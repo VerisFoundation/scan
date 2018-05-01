@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { gql } from 'apollo-boost'
 import { Query } from 'react-apollo'
+import Address from './Address'
 
 const GET_TRANSACTION = gql`
   query transaction($id: String!) {
@@ -46,7 +47,9 @@ const Transaction = ({ match }) => (
           <div>
             <h2>Transaction Information</h2>
             <h3>{tx.type.replace('Transaction', '')} Transaction</h3>
-            <h4>Hash: {tx.id}</h4>
+            <h4>
+              Hash: <Address>{tx.id}</Address>
+            </h4>
             <h4>
               Block: <Link to={`/block/${tx.block.index}`}>{tx.block.index}</Link>
             </h4>
@@ -74,7 +77,10 @@ const Transaction = ({ match }) => (
 const Output = ({ account, asset, value }) => (
   <ul>
     <li>
-      <Link to={`/address/${account.address}`}>{account.address}</Link> ({value} {asset.name === 'NEO' ? 'VRS' : 'VRC'})
+      <Link to={`/address/${account.address}`}>
+        <Address>{account.address}</Address>
+      </Link>{' '}
+      ({value} {asset.name === 'NEO' ? 'VRS' : 'VRC'})
     </li>
   </ul>
 )
