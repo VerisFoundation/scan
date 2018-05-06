@@ -23,14 +23,26 @@ const Account = ({ match }) => (
       {({ loading, error, data }) => {
         if (loading) return null
         if (error) return `Error!: ${error}`
-        console.log(data)
-        return (
-          <div>
-            <h2>Account</h2>
-            <h3>Address: {data.account.address}</h3>
-            {data.account.balances.map((balance, i) => <Balance key={i} {...balance} />)}
-          </div>
-        )
+        if (data.account) {
+          return (
+            <div>
+              <h2>Account</h2>
+              <h3>Address: {data.account.address}</h3>
+              {data.account.balances.map((balance, i) => <Balance key={i} {...balance} />)}
+            </div>
+          )
+        } else {
+          return (
+            <div className="error">
+              <h2>Account not found</h2>
+              <figure>
+                <span role="img" aria-label="Sad Day">
+                  😞
+                </span>
+              </figure>
+            </div>
+          )
+        }
       }}
     </Query>
   </div>

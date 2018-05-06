@@ -42,33 +42,45 @@ const Transaction = ({ match }) => (
         if (loading) return null
         if (error) return `Error!: ${error}`
         const tx = data.transaction
-        console.log(data)
-        return (
-          <div>
-            <h2>Transaction Information</h2>
-            <h3>{tx.type.replace('Transaction', '')} Transaction</h3>
-            <h4>
-              Hash: <Address>{tx.id}</Address>
-            </h4>
-            <h4>
-              Block: <Link to={`/block/${tx.block.index}`}>{tx.block.index}</Link>
-            </h4>
-            <table>
-              <thead>
-                <tr>
-                  <th>From</th>
-                  <th>To</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>{tx.inputs.map((input, i) => <Output key={i} {...input} />)}</td>
-                  <td>{tx.outputs.map((output, i) => <Output key={i} {...output} />)}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        )
+        if (data.transaction) {
+          return (
+            <div>
+              <h2>Transaction Information</h2>
+              <h3>{tx.type.replace('Transaction', '')} Transaction</h3>
+              <h4>
+                Hash: <Address>{tx.id}</Address>
+              </h4>
+              <h4>
+                Block: <Link to={`/block/${tx.block.index}`}>{tx.block.index}</Link>
+              </h4>
+              <table>
+                <thead>
+                  <tr>
+                    <th>From</th>
+                    <th>To</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{tx.inputs.map((input, i) => <Output key={i} {...input} />)}</td>
+                    <td>{tx.outputs.map((output, i) => <Output key={i} {...output} />)}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          )
+        } else {
+          return (
+            <div className="error">
+              <h2>Transaction not found</h2>
+              <figure>
+                <span role="img" aria-label="Sad Day">
+                  😞
+                </span>
+              </figure>
+            </div>
+          )
+        }
       }}
     </Query>
   </div>

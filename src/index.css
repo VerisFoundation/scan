@@ -81,6 +81,39 @@ header img {
   height: 40px;
 }
 
+header .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+header form {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem;
+}
+
+header form input {
+  border: thin solid #286fa2;
+  border-radius: 0.25rem;
+  padding: 0.25rem;
+  font-size: 0.8rem;
+  font-family: 'Source Sans Pro', sans-serif;
+  width: 16rem;
+}
+
+header form button {
+  background-color: transparent;
+  border: none;
+  margin: 0.5rem;
+}
+
+header form button svg {
+  height: 1rem;
+  width: 1rem;
+}
+
 footer {
   padding: 1rem;
 }
@@ -107,4 +140,25 @@ table.transactions .type {
 
 table.transactions .time {
   width: 8rem;
+}
+
+.error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+}
+
+.error h2 {
+  text-transform: uppercase;
+}
+
+.error figure {
+  font-size: 3rem;
+}
+
+.search-error {
+  border-color: #531022;
+  background-color: #f1ced7;
 }

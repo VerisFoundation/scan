@@ -9,6 +9,7 @@ const GET_BLOCK = gql`
   query block($index: Int!) {
     block(index: $index) {
       index
+      hash
       time
       transactions {
         type
@@ -25,27 +26,41 @@ const Block = ({ match }) => {
         {({ loading, error, data }) => {
           if (error) console.log(error)
           if (loading || error) return null
-
-          console.log(data)
-          return (
-            <div>
-              <h2>Block {data.block.index}</h2>
-              <h4>
-                {moment(data.block.time).format('MMMM Do YYYY, h:mm:ss a')} ({moment(data.block.time).fromNow()})
-              </h4>
-              <h3>Transactions</h3>
-              <ul>
-                {data.block.transactions.map(transaction => (
-                  <li key={transaction.id}>
-                    {transaction.type}{' '}
-                    <Link to={`/transaction/${transaction.id}`}>
-                      <Address>{transaction.id}</Address>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )
+          if (data.block) {
+            return (
+              <div>
+                <h2>Block {data.block.index}</h2>
+                <h3>
+                  <Address>{data.block.hash}</Address>
+                </h3>
+                <h4>
+                  {moment(data.block.time).format('MMMM Do YYYY, h:mm:ss a')} ({moment(data.block.time).fromNow()})
+                </h4>
+                <h3>Transactions</h3>
+                <ul>
+                  {data.block.transactions.map(transaction => (
+                    <li key={transaction.id}>
+                      {transaction.type}{' '}
+                      <Link to={`/transaction/${transaction.id}`}>
+                        <Address>{transaction.id}</Address>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )
+          } else {
+            return (
+              <div className="error">
+                <h2>Block not found</h2>
+                <figure>
+                  <span role="img" aria-label="Sad Day">
+                    😞
+                  </span>
+                </figure>
+              </div>
+            )
+          }
         }}
       </Query>
     </div>

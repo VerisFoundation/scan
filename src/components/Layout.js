@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Search from './Search'
 import logo from '../images/logo.svg'
 
 const Layout = ({ children }) => (
@@ -11,6 +12,7 @@ const Layout = ({ children }) => (
             <img src={logo} alt="Veris Logo" height="40" />
           </Link>
         </h1>
+        <Search />
       </div>
     </header>
     <main>
